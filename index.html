@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Dominic | GitHub-Style Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --github-dark: #0d1117;
+            --github-dark-2: #161b22;
+            --github-border: #30363d;
+            --github-text: #c9d1d9;
+            --github-text-secondary: #8b949e;
+            --github-accent: #58a6ff;
+            --github-green: #238636;
+            --github-blue: #1f6feb;
+            --github-purple: #8957e5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--github-dark);
+            color: var(--github-text);
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* Header - GitHub Style */
+        header {
+            background-color: var(--github-dark-2);
+            border-bottom: 1px solid var(--github-border);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--github-text);
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .logo i {
+            color: var(--github-accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 16px;
+        }
+
+        nav a {
+            color: var(--github-text);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        nav a:hover {
+            background-color: rgba(110, 118, 129, 0.1);
+        }
+
+        nav a.active {
+            font-weight: 600;
+        }
+
+        /* Hero Section - GitHub Profile Style */
+        .hero {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--github-border);
+        }
+
+        .hero-container {
+            display: flex;
+            gap: 32px;
+            align-items: flex-start;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 260px;
+            height: 260px;
+        }
+
+        .avatar {
+            width: 100%;
+            border-radius: 50%;
+            border: 1px solid var(--github-border);
+            transition: transform 0.3s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+        }
+
+        .tech-badge {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--github-dark-2);
+            border: 1px solid var(--github-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        .tech-badge:nth-child(1) { bottom: 10px; right: 10px; }
+        .tech-badge:nth-child(2) { top: 20px; right: 0; }
+        .tech-badge:nth-child(3) { top: 20px; left: 0; }
+        .tech-badge:nth-child(4) { bottom: 10px; left: 10px; }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-name {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--github-text);
+        }
+
+        .profile-username {
+            font-size: 20px;
+            color: var(--github-text-secondary);
+            margin-bottom: 16px;
+            font-weight: 300;
+        }
+
+        .profile-bio {
+            font-size: 16px;
+            margin-bottom: 16px;
+            color: var(--github-text);
+            min-height: 24px;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 20px;
+            background-color: var(--github-accent);
+            animation: blink 1s infinite;
+            vertical-align: middle;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+
+        .profile-stats a {
+            color: var(--github-text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+        }
+
+        .profile-stats a:hover {
+            color: var(--github-accent);
+        }
+
+        .profile-links {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .btn {
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--github-green);
+            color: white;
+            border: 1px solid rgba(240, 246, 252, 0.1);
+        }
+
+        .btn-primary:hover {
+            background-color: #2ea043;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: var(--github-dark-2);
+            color: var(--github-accent);
+            border: 1px solid var(--github-border);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(56, 139, 253, 0.1);
+            border-color: var(--github-accent);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content - GitHub Repo Style */
+        .main-content {
+            padding: 32px 0;
+            display: flex;
+            gap: 32px;
+        }
+
+        .sidebar {
+            width: 260px;
+            position: sticky;
+            top: 100px;
+            align-self: flex-start;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        .section {
+            margin-bottom: 32px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--github-border);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        /* About Section */
+        .about-box {
+            background-color: var(--github-dark-2);
+            border: 1px solid var(--github-border);
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-box h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: var(--github-text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .about-box p {
+            margin-bottom: 12px;
+            color: var(--github-text-secondary);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .skill-item {
+            background-color: rgba(56, 139, 253, 0.1);
+            color: var(--github-accent);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            border: 1px solid rgba(56, 139, 253, 0.2);
+            transition: all 0.2s;
+        }
+
+        .skill-item:hover {
+            background-color: rgba(56, 139, 253, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Projects Section - GitHub Repo Cards */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        .project-card {
+            background-color: var(--github-dark-2);
+            border: 1px solid var(--github-border);
+            border-radius: 6px;
+            padding: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--github-accent);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .project-title {
+            font-weight: 600;
+            color: var(--github-accent);
+            text-decoration: none;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-title i {
+            color: var(--github-text-secondary);
+        }
+
+        .project-description {
+            color: var(--github-text-secondary);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 12px;
+            color: var(--github-text-secondary);
+        }
+
+        .project-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Video Demo Section */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 6px;
+            border: 1px solid var(--github-border);
+            margin-bottom: 16px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Contact Section */
+        .contact-form {
+            background-color: var(--github-dark-2);
+            border: 1px solid var(--github-border);
+            border-radius: 6px;
+            padding: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--github-text);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px 12px;
+            background-color: var(--github-dark);
+            border: 1px solid var(--github-border);
+            border-radius: 6px;
+            color: var(--github-text);
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--github-accent);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--github-border);
+            padding: 32px 0;
+            text-align: center;
+            color: var(--github-text-secondary);
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--github-accent);
+            text-decoration: none;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-links a:hover {
+            color: var(--github-text);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .avatar-container {
+                margin-bottom: 20px;
+            }
+
+            .profile-links {
+                justify-content: center;
+            }
+
+            .profile-stats {
+                justify-content: center;
+            }
+
+            .main-content {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+
+            .avatar {
+                width: 180px;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-code"></i>
+                <span>Aura Dominic</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#about" class="active">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="avatar-container">
+                <img src="photos/orii.jpg" alt="Aura Dominic" class="avatar">
+                <div class="tech-badge">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
+                </div>
+                <div class="tech-badge">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js">
+                </div>
+                <div class="tech-badge">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                </div>
+                <div class="tech-badge">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB">
+                </div>
+            </div>
+            <div class="profile-info">
+                <h1 class="profile-name">Aura Orimba Dominic</h1>
+                <p class="profile-username">Full Stack Developer</p>
+                <p class="profile-bio" id="typing-text"></p>
+                
+                <div class="profile-stats">
+                    <a href="#"><i class="fas fa-map-marker-alt"></i> Kisumu, Kenya</a>
+                    <a href="mailto:auradominic00@gmail.com"><i class="fas fa-envelope"></i> auradominic00@gmail.com</a>
+                    <a href="tel:+254769784597"><i class="fas fa-phone"></i> +254 769 784 597</a>
+                </div>
+                
+                <div class="profile-links">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-eye"></i> View Projects
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-paper-plane"></i> Contact Me
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container main-content">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="section">
+                <div class="about-box">
+                    <h3><i class="fas fa-user"></i> About</h3>
+                    <p>Full-stack developer with expertise in creating responsive web applications. My passion lies in building intuitive user experiences with clean, efficient code.</p>
+                </div>
+                
+                <div class="about-box">
+                    <h3><i class="fas fa-code"></i> Skills</h3>
+                    <div class="skills-list" id="skillsList">
+                        <!-- Skills will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="about-box">
+                    <h3><i class="fas fa-download"></i> Download CV</h3>
+                    <a href="docs/Aura_Dominic_CV.pdf" class="btn btn-primary" download style="width: 100%; text-align: center;">
+                        Download Resume
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="content">
+            <!-- Projects Section -->
+            <section id="projects" class="section">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-project-diagram"></i> Projects</h2>
+                </div>
+                <div class="projects-grid" id="projectsContainer">
+                    <!-- Projects will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Video Demo Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-video"></i> Have Fun</h2>
+                </div>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <p style="text-align: center; color: var(--github-text-secondary);">Get some good song before we get to serious business and enjoy .</p>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-envelope"></i> Contact</h2>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://github.com/ORIIPAPA"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/aura-dominic-388377237"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://twitter.com/@orimba_domnic"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="https://wa.me/+254769784597"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+            <p>© <span id="currentYear"></span> Aura Dominic. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Typewriter effect
+        const typingText = document.getElementById('typing-text');
+        const phrases = [
+            "Passionate designer and developer",
+            "Creating beautiful digital experiences",
+            "Building functional web applications",
+            "Making an impact with code"
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let isEnd = false;
+
+        function typeWriter() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isEnd = true;
+                isDeleting = true;
+                setTimeout(typeWriter, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                setTimeout(typeWriter, 500);
+            } else {
+                const speed = isDeleting ? 50 : 100;
+                setTimeout(typeWriter, speed);
+            }
+        }
+
+        // Start typing effect after page loads
+        setTimeout(typeWriter, 1000);
+
+        // Load skills
+        const skills = [
+            'HTML5', 'CSS3', 'JavaScript', 'React', 'Vue.js',
+            'Node.js', 'Express', 'MongoDB', 'UI/UX Design',
+            'Responsive Design', 'Git', 'Webpack', 'SASS',
+            'TypeScript', 'Python', 'PHP', 'MySQL'
+        ];
+        
+        const skillsList = document.getElementById('skillsList');
+        skills.forEach(skill => {
+            const skillItem = document.createElement('span');
+            skillItem.className = 'skill-item';
+            skillItem.textContent = skill;
+            skillsList.appendChild(skillItem);
+        });
+
+        // Load projects
+        const projects = [
+            {
+                title: 'E-commerce Website',
+                description: 'A fully responsive e-commerce platform with product filtering, cart functionality, and secure checkout.',
+                tech: ['React', 'Node.js', 'MongoDB'],
+                link: '#',
+                code: '#'
+            },
+            {
+                title: 'Portfolio Template',
+                description: 'A clean, modern portfolio template for creatives and developers.',
+                tech: ['HTML5', 'CSS3', 'JavaScript'],
+                link: '#',
+                code: '#'
+            },
+            {
+                title: 'QR Code BAsed Students Attendance System',
+                description: 'A productivity app for managing tasks with drag-and-drop functionality and team collaboration.',
+                tech: ['vanilla javascript', 'MysQL_PDO', 'PHP','Ajax'],
+                link: '#',
+                code: '#'
+            }
+            
+        ];
+        
+        const projectsContainer = document.getElementById('projectsContainer');
+        projects.forEach(project => {
+            const projectCard = document.createElement('div');
+            projectCard.className = 'project-card';
+            projectCard.innerHTML = `
+                <div class="project-header">
+                    <a href="${project.link}" class="project-title">
+                        <i class="fas fa-book"></i>
+                        ${project.title}
+                    </a>
+                </div>
+                <p class="project-description">${project.description}</p>
+                <div class="project-meta">
+                    <span><i class="fas fa-code"></i> ${project.tech.join(', ')}</span>
+                </div>
+            `;
+            projectsContainer.appendChild(projectCard);
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+
+        // Add hover effect to tech badges
+        const techBadges = document.querySelectorAll('.tech-badge');
+        techBadges.forEach(badge => {
+            badge.addEventListener('mouseenter', () => {
+                badge.style.transform = 'scale(1.2) translateY(-5px)';
+                badge.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.3)';
+            });
+            badge.addEventListener('mouseleave', () => {
+                badge.style.transform = 'scale(1)';
+                badge.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
