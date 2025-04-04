@@ -806,5 +806,54 @@
             });
         });
     </script>
+        <!-- Add these right before the closing </body> tag -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+  apiKey: "AIzaSyDLpfH_l6IDWImLTxdE38cSafYjT2iMuIE",
+  authDomain: "portfo-fdba9.firebaseapp.com",
+  projectId: "portfo-fdba9",
+  storageBucket: "portfo-fdba9.firebasestorage.app",
+  messagingSenderId: "721492838949",
+  appId: "1:721492838949:web:b39edd1896478fb64f8dcc",
+  measurementId: "G-LJXVG3B7VX"
+};
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Button click tracking function
+        function trackButtonClick(buttonElement) {
+    const buttonData = {
+        buttonText: buttonElement.innerText.trim(),
+        buttonId: buttonElement.id || null,
+        buttonClass: buttonElement.className,
+        href: buttonElement.href || null,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        pageUrl: window.location.href,
+        userAgent: navigator.userAgent
+    };
+    
+    db.collection("buttonClicks").add(buttonData)
+        .catch((error) => {
+            console.error("Error tracking button click: ", error);
+        });
+}
+        }
+
+        // Attach click handlers to all buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.btn, .btn-primary, .btn-outline');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const buttonText = this.innerText.trim() || this.getAttribute('aria-label') || 'unknown-button';
+                    trackButtonClick(buttonText);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
