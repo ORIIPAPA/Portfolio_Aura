@@ -1,6 +1,6 @@
 # Aura Dominic - Portfolio
 
-![GitHub-style Portfolio](screenshot.png)
+![GitHub-style Portfolio](Screenshot.png)
 
 🔗 **Live Site:** [https://aurad-portfolio.netlify.app/#projects](https://aurad-portfolio.netlify.app/#projects)
 
