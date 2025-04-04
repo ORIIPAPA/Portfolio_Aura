@@ -25,7 +25,7 @@
    - `FIREBASE_API_KEY`
    - `FIREBASE_AUTH_DOMAIN`
    - `FIREBASE_PROJECT_ID`
-   - etc.
+   
 4. Deploy to Netlify
 
 ## Database Structure
