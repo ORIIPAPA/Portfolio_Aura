@@ -2,6 +2,8 @@
 
 ![GitHub-style Portfolio](screenshot.png)
 
+🔗 **Live Site:** [https://aurad-portfolio.netlify.app/#projects](https://aurad-portfolio.netlify.app/#projects)
+
 ## Features
 - Real-time data from Firebase Firestore
 - Responsive GitHub-inspired design
