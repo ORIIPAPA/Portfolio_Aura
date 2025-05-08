@@ -728,10 +728,10 @@
 
         // Load skills
         const skills = [
-           "IT Support System and Network', 'HTML5', 'CSS3', 'JavaScript', 'React', 'Vue.js',
-            'Node.js', 'Express', 'MongoDB', 'UI/UX Design',
-            'Responsive Design', 'Git', 'Webpack', 'SASS',
-            'TypeScript', 'Python', 'PHP', 'MySQL'
+           "IT Support System and Network", "HTML5", "CSS3", "JavaScript", "React", "Vue.js",
+            "Node.js", "Express", "MongoDB", "UI/UX Design",
+            "Responsive Design", "Git", "Webpack", "SASS",
+            "TypeScript", "Python", "PHP", "MySQL"
         ];
         
         const skillsList = document.getElementById('skillsList');
@@ -836,21 +836,20 @@
 
         // Button click tracking function
         function trackButtonClick(buttonElement) {
-    const buttonData = {
-        buttonText: buttonElement.innerText.trim(),
-        buttonId: buttonElement.id || null,
-        buttonClass: buttonElement.className,
-        href: buttonElement.href || null,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        pageUrl: window.location.href,
-        userAgent: navigator.userAgent
-    };
-    
-    db.collection("buttonClicks").add(buttonData)
-        .catch((error) => {
-            console.error("Error tracking button click: ", error);
-        });
-}
+            const buttonData = {
+                buttonText: buttonElement.innerText.trim(),
+                buttonId: buttonElement.id || null,
+                buttonClass: buttonElement.className,
+                href: buttonElement.href || null,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                pageUrl: window.location.href,
+                userAgent: navigator.userAgent
+            };
+            
+            db.collection("buttonClicks").add(buttonData)
+                .catch((error) => {
+                    console.error("Error tracking button click: ", error);
+                });
         }
 
         // Attach click handlers to all buttons
@@ -858,8 +857,7 @@
             const buttons = document.querySelectorAll('.btn, .btn-primary, .btn-outline');
             buttons.forEach(button => {
                 button.addEventListener('click', function() {
-                    const buttonText = this.innerText.trim() || this.getAttribute('aria-label') || 'unknown-button';
-                    trackButtonClick(buttonText);
+                    trackButtonClick(this);
                 });
             });
         });
